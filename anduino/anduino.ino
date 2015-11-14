@@ -30,15 +30,17 @@ string encodeDelay(char c) {
       switch(d)
       {
         case d == '.':
-
+          delayArray[x] = 1000;
         break;
 
         case d == '=':
-
+          delayArray[x] = 1500;
         break;
       }
     }  
-           
+
+
+    return delayArray;       
 }
 
 
