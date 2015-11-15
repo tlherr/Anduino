@@ -1,11 +1,12 @@
 
 // Blinking LED
 const int LED = 12; //LED connected to digital pin 13
-const int Light = 0;
+const int sensorPin = 0;
 int lightLevel, high = 0, low = 1023;
 String poem = "so long as men can breathe and eyes can see so long lives this and gives life to thee";
 
 
+//Given a char value, find its morse code representation and then manipulate LED accordingly
 string encodeDelay(char c) {
     String text[26] = "abcdefghijklmnopqrstuvwqyz";
     
@@ -57,10 +58,12 @@ void setup() {
  
 void loop() {
 
+  //Read through the characters in the string, pass each non space char to the encode function
   for (int z=0; z<poem.length; z++) {
       char d = poem.charAt(z);
 
       if(d != ' ') {
+          lightLevel = analogRead(sensorPin);
           encodeDelay(d);
       }
   }
