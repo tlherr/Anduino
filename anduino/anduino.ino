@@ -64,7 +64,10 @@ void loop() {
 
       if(d != ' ') {
           lightLevel = analogRead(sensorPin);
-          encodeDelay(d);
+
+          if(lightLevel>50) {
+            encodeDelay(d);
+          } 
       }
   }
   
