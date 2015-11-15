@@ -24,6 +24,8 @@ String encodeDelay(char c) {
       }
     }
 
+    Serial.println(morseString);
+
     //Read the morse string, and do process dots and dashes
     for (int x=0; x<morseString.length(); x++) {
       char d = morseString.charAt(x);
@@ -31,6 +33,7 @@ String encodeDelay(char c) {
       switch(d)
       {
         case '.':
+          Serial.println("Dot");
           digitalWrite(LED, HIGH);
           delay(1000);
           digitalWrite(LED, LOW);
@@ -38,6 +41,7 @@ String encodeDelay(char c) {
         break;
 
         case '-':
+          Serial.println("Dash");
           digitalWrite(LED, HIGH);
           delay(1500);
           digitalWrite(LED, LOW);
@@ -48,18 +52,27 @@ String encodeDelay(char c) {
 }
 
 void setup() {
+  Serial.begin(9600);
   pinMode(LED, OUTPUT); //sets the digital pin as output
 }
  
 void loop() {
 
+  Serial.println("==== Beginning Loop ====");
   //Read through the characters in the string, pass each non space char to the encode function
   for (int z=0; z<poem.length(); z++) {
       char d = poem.charAt(z);
+      Serial.print("Checking character: ");
+      Serial.print(d);
+      Serial.print(" At Index: ");
+      Serial.print(z);
+      Serial.println("");
 
       if(d != ' ') {
           lightLevel = analogRead(sensorPin);
 
+          Serial.println(lightLevel);
+ 
           if(lightLevel>50) {
             encodeDelay(d);
           } 
