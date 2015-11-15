@@ -12,7 +12,7 @@ String morse[] = {".-","-...","-.-.","-..", ".", "..-.", "--.",
                   "..-", "...-", ".--", "-..-", "-.--", "--.."};
 
 //Given a char value, find its morse code representation and then manipulate LED accordingly
-String encodeDelay(char c) {
+void encodeDelay(char c) {
 
     String morseString;
     int delayArray[] = {}; //mad rhymes yo
